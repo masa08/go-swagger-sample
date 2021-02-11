@@ -19,4 +19,4 @@ tasks:
   build:
     cmds:
       - go build -v -o {{ .EXE }} ./cmd/sample-server/main.go
-# migration fileもここに記述する
+# migrationもここに記述する

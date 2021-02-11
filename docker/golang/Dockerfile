@@ -7,6 +7,7 @@ RUN apk add --update --no-cache \
   postgresql-client
 
 RUN go get -u github.com/oxequa/realize
+EXPOSE 80
 CMD ["realize", "start"]
 
 RUN wget https://github.com/golang-migrate/migrate/releases/download/v4.12.2/migrate.linux-amd64.tar.gz && \
