@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS users
   user_name   text NOT NULL,
   created_at  timestamp(0) without time zone NOT NULL default now(),
   updated_at  timestamp(0) without time zone NOT NULL default now(),
-  deleted_at  timestamp(0) without time zone default NULL,
+  deleted_at  timestamp(0) without time zone default NULL
 );
