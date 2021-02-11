@@ -1,0 +1,22 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  EXE: app{{exeExt}}
+  PORT: 80
+  HOST: 0.0.0.0
+
+tasks:
+  default:
+    cmds:
+      - task: run
+  run:
+    cmds:
+      - task: build
+      - ./{{ .EXE }} --port {{ .PORT }} --host {{ .HOST }}
+
+  build:
+    cmds:
+      - go build -v -o {{ .EXE }} ./cmd/sample-server/main.go
+# migration fileもここに記述する

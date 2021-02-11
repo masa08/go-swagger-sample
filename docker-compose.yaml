@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  web:
+    container_name: web
+    build: ./docker/golang
+    tty: true
+    volumes:
+      - ./:/go/src/go-swagger-example
+    ports:
+      - '80:80'
+    working_dir: /go/src/go-swagger-example
+    command: ['./docker/wait-for-postgres.sh', 'postgres', 'task', '-w']
+    depends_on:
+      - postgres
+  postgres:
+    container_name: postgress
+    build: ./docker/postgres
+    environment:
+      POSTGRES_DB: lead
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data:/var/lib/postgresql/data:delegated
