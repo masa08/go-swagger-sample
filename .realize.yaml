@@ -5,7 +5,9 @@ settings:
 schema:
 - name: go-swagger-example
   path: .
-  commands: {}
+  commands:
+    run:
+      status: true
   watcher:
     extensions:
     - go
