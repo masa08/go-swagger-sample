@@ -10,6 +10,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
+	"go-swagger-example/handlers"
 	"go-swagger-example/restapi/operations"
 	"go-swagger-example/restapi/operations/pet"
 	"go-swagger-example/restapi/operations/store"
@@ -126,11 +127,9 @@ func configureAPI(api *operations.SampleAPI) http.Handler {
 			return middleware.NotImplemented("operation pet.GetPetByID has not yet been implemented")
 		})
 	}
-	if api.UserGetUserByNameHandler == nil {
-		api.UserGetUserByNameHandler = user.GetUserByNameHandlerFunc(func(params user.GetUserByNameParams) middleware.Responder {
-			return middleware.NotImplemented("operation user.GetUserByName has not yet been implemented")
-		})
-	}
+
+	api.UserGetUserByNameHandler = handlers.NewGetUserByNameHandler()
+
 	if api.UserLoginUserHandler == nil {
 		api.UserLoginUserHandler = user.LoginUserHandlerFunc(func(params user.LoginUserParams) middleware.Responder {
 			return middleware.NotImplemented("operation user.LoginUser has not yet been implemented")
